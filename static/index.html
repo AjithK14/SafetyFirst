@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+  function validateForm() {
+      console.log(document.forms["form"]["fname"])
+      if (document.forms["form"]["text"].value == "" || document.getElementById("myfile").value == "") {
+          alert("BOTH FIELDS MUST BE FILLED OUT");
+          return false;
+      }
+      document.getElementById("loader").style.visibility="visible"
+  }
+  </script>
+  <link rel="icon" 
+    type="image/png" 
+    href="favicon.png">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Safety First</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../../dist/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="#a7ffeb teal accent-4" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Safety First</a>
+      <ul class="right hide-on-med-and-down">
+        <li>
+        <!-- Modal Trigger -->
+          <a class="waves-effect waves-light btn modal-trigger #a7ffeb teal accent-4" href="#modal1">About</a>
+          <div id="modal1" class="modal">
+            <div class="modal-content">
+              <h4><span class="blue-text text-darken-2">How to use this Web App</span></h4>
+              	<h6 class="blue-text">
+              	This is a web app designed to appropriately redistrict Emergency Medical
+              	Services (EMS). This app will take the amount of EMS available, all 
+              	data from past crimes, and recommend where EMS should be placed to facilitate fast treatment. <br> <br>
+              	In the future more file formats will definitely become available, but for now in order
+              	for this app to properly make recommendations, a CSV file is required. The CSV must have
+              	the latitude and longitude coordinates of each crime. The number of EMS available must be manually entered. The app will take this data from past crimes, predict where future crimes will
+              	happen, and recommend where the existing stations should be placed.
+                <br><br>
+                The app will download (Longitude, Latitude) coordinates for each precinct to your computer.
+                The purpose of the map is to visualize and gain a contextual understanding on how
+                the precincts were spaced out. To best use it, zoom in on the reddest areas, or areas with highest crime.
+          	  	</h6>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Ok</a>
+            </div>
+          </div>
+      	 </li>
+      	
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div  class="section no-pad-bot #fafafa grey lighten-5" id="index-banner" style="position:relative;">
+    <div class="container">
+      <h1 class="header center indigo-text">Safety First</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Strategic placement of Emergency Services</h5>
+      </div>
+      <br>
+      <form onsubmit="return validateForm()" name="form" id='form' method="POST" enctype="multipart/form-data" action="/submit">
+        <div class="row center input-field">
+            <i class="material-icons prefix">location_city</i>
+            <input id="icon_prefix" type="number" name="text" class="validate">
+            <label for="icon_prefix">Medical Centers Available</label>
+        </div>
+        <br>
+         <div class="row center file-field input-field">
+
+           <div class="btn">
+             <span>File</span>
+             <input id="myfile" type="file" name="file">
+           </div>
+           <div class="file-path-wrapper">
+             <input placeholder="CSV of crimes with Lat/Lon coordiantes" class="file-path validate" type="text"> 
+           </div>
+
+         </div>
+         <br>
+	         <div class="row center">
+	           <input type="submit" value="Submit" class="btn-large waves-effect waves-light #00b8d4 cyan accent-4">
+	         </div>
+         <br>
+       </form>
+       <div id="loader" style="width: 50%;margin: 0 auto;visibility: hidden;" class="progress">
+             <div class="indeterminate"></div>
+       </div>
+      <br>
+      <br>
+    </div>
+  </div>
+
+  <footer class="page-footer #a7ffeb teal accent-4">
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="https://github.com/ajithk14">Ajith Kemisetti</a>
+      </div>
+    </div>
+  </footer>
+
+
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+ 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+ 	<script>
+ 		$(document).ready(function(){
+ 		    $('.modal').modal();
+ 		  });
+
+ 	</script>
+ 	<script>
+ 	    $(".row.center").hide(0).fadeIn(1000)
+ 	    
+ 	    $(".page-footer.orange").hide(0).fadeIn(1000)
+
+ 	</script>
+  </body>
+</html>
+

@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title></title>
+  <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
+  <style>
+    body {
+      margin: 0;
+      padding :0;
+    }
+    .map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css' rel='stylesheet' />
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.Default.css' rel='stylesheet' />
+<div id='map-cluster' class='map'></div>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoiYWppdGhrMTQiLCJhIjoiY2pvMXFmd2cxMGVnYjNxcnBzM2w0cnpxNCJ9.nhGODizfKTRlrRp_7AkN4A';
+var mapCluster = L.mapbox.map('map-cluster')
+  .setView([{{avglat}}, {{avglon}}], 11)
+  .addLayer(L.mapbox.tileLayer('mapbox.light'));
+L.mapbox.featureLayer()
+  .loadURL('stations2.geojson')
+  .on('ready', function(e) {
+    var clusterGroup = new L.MarkerClusterGroup();
+    e.target.eachLayer(function(layer) {
+      clusterGroup.addLayer(layer);
+    });
+    mapCluster.addLayer(clusterGroup);
+  });
+mapCluster.scrollWheelZoom.disable();
+</script>
+</body>
+</html>

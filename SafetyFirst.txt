@@ -1,0 +1,15 @@
+Web app that is given data set of coordinates of average crime over the years and it also is given the amount of EM centers and police stations available
+
+Web app will take all this data and create appropriate districts 
+
+Website should look very nice and should have plenty of materialize to go around
+
+Possibly discuss that old stuff uses old packages and stuff
+Old pacakges use tensorflow and extremely old libaries and statsmodels
+Scikit learn is more efficient because it has prebuilt/cached models that makes it more efficient
+
+(don't use clustering)
+
+use c to make it faster
+
+GUI acts as a way of veryifying that the hospitals were appropriately placed
